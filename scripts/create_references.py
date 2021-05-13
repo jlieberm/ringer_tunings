@@ -30,18 +30,42 @@ ref_target = [
               ('hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
               ('hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
               ('hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
-              ('rlx20_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
-              ('rlx20_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
-              ('rlx20_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
-              ('rlx30_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
-              ('rlx30_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
-              ('rlx30_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
-              ('rlx40_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
-              ('rlx40_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
-              ('rlx40_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
-              ('rlx50_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
-              ('rlx50_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
-              ('rlx50_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              ('rlx90_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              ('rlx90_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              ('rlx90_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              ('rlx85_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              ('rlx85_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              ('rlx85_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              ('rlx83_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              ('rlx83_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              ('rlx83_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              
+              ('rlx80_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              ('rlx80_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              ('rlx80_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+
+              ('rlx79_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              ('rlx79_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              ('rlx79_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              ('rlx78_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              ('rlx78_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              ('rlx78_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              ('rlx77_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              ('rlx77_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              ('rlx77_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              ('rlx76_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              ('rlx76_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              ('rlx76_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              ('rlx75_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              ('rlx75_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              ('rlx75_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              ('rlx70_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              ('rlx70_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              ('rlx70_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              ('rlx65_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              ('rlx65_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              ('rlx65_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+
 
               ]
 
@@ -94,11 +118,12 @@ for f in fileList:
     d_b = d[target!=1]
     if 'rlx' in ref[0]:
       factor = ref[0].replace('rlx','')
-      factor = int(factor[0:factor.find('_')])
-      id = ref[0].replace('rlx'+str(factor)+'_hlt_','')
+      factor = factor[0:factor.find('_')]
+      id = ref[0].replace('rlx'+factor+'_hlt_','')
       passedT2Calo = obj.getSgnPassed('t2calo_'+id)
       passedHLT = obj.getSgnPassed('hlt_'+id)
-      deltaPassed = int((passedT2Calo - passedHLT)*factor/100)
+      factor = float(factor)
+      deltaPassed = int((len(d_s) - passedHLT)*factor/100)
       obj.addSgn( ref[0], ref[1], sum(d_s) + deltaPassed, len(d_s) )
       obj.addBkg( ref[0], ref[1], sum(d_b), len(d_b) )
     else:

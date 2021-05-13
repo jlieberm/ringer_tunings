@@ -4,17 +4,17 @@ import glob
 from itertools import product
 
 # define the paths into the container
-# data_path    = '/home/juan.marin/datasets/npz/mc16_13TeV/prompt_vs_all_mc16a/mc16_13TeV.sgn.MC.gammajet.bkg.vetoMC.dijet_et%i_eta%i.npz'
-# ref_path     = '/home/juan.marin/tunings/v1/prompt_vs_all_mc16a/ref/mc16_13TeV.sgn.MC.gammajet.bkg.vetoMC.dijet_et%i_eta%i.ref.pic.gz'
-# config_path  = '/home/juan.marin/tunings/v1/prompt_vs_all_mc16a/config/job_config.Zrad_v1.n2to10.10sorts.100inits/*'
-# output_path  = '/home/juan.marin/tunings/v1/prompt_vs_all_mc16a/output/mc16_13TeV.sgn.MC.gammajet.bkg.vetoMC.dijet_et%i_eta%i.v1'
+data_path    = '/home/juan.marin/datasets/npz/mc16_13TeV/prompt_vs_all/mc16_13TeV.sgn.MC.gammajet.bkg.vetoMC.dijet_et%i_eta%i.npz'
+ref_path     = '/home/juan.marin/tunings/v1/prompt_vs_all_mc16e/ref/mc16_13TeV.sgn.MC.gammajet.bkg.vetoMC.dijet_et%i_eta%i.ref.pic.gz'
+config_path  = '/home/juan.marin/tunings/v1/prompt_vs_all_mc16e/config/job_config.Zrad_v1.n2to10.10sorts.100inits/*'
+output_path  = '/home/juan.marin/tunings/v1/prompt_vs_all_mc16e/output/mc16_13TeV.sgn.MC.gammajet.bkg.vetoMC.dijet_et%i_eta%i.v1'
 
 # create a list of config files
 config_list  = glob.glob(config_path)
 print(config_list)
 
 # loop over the bins
-for iet, ieta in product(range(5), range(5)):
+for iet, ieta in product(range(1,2), range(1,2)):
     print('Processing -> et: %i | eta: %i' %(iet, ieta))
     # format the names
     data_file = data_path %(iet, ieta)

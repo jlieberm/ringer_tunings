@@ -26,22 +26,22 @@ def getPatterns( path, cv, sort):
   features=raw['features']
   sgnData = data[target==1]
   bkgData = data[target!=1]
-  featIndex = np.where(features=='mc_type')[0][0]
-  s = []
-  b = []
-  for i in range(len(sgnData)):
-    if sgnData[i,featIndex]==14 or sgnData[i,featIndex]==15 or sgnData[i,featIndex]==13:
-      s.append(sgnData[i,:])
+  # featIndex = np.where(features=='mc_type')[0][0]
+  # s = []
+  # b = []
+  # for i in range(len(sgnData)):
+  #   if sgnData[i,featIndex]==14 or sgnData[i,featIndex]==15 or sgnData[i,featIndex]==13:
+  #     s.append(sgnData[i,:])
 
-  for i in range(len(bkgData)):
-    if bkgData[i,featIndex]!=14 and bkgData[i,featIndex]!=15 and bkgData[i,featIndex]!=13:
-      b.append(bkgData[i,:])
+  # for i in range(len(bkgData)):
+  #   if bkgData[i,featIndex]!=14 and bkgData[i,featIndex]!=15 and bkgData[i,featIndex]!=13:
+  #     b.append(bkgData[i,:])
   
-  s = np.asarray(s)
-  b = np.asarray(b)
-  data = np.concatenate((s,b),axis=0)
-  target = np.concatenate((np.ones(len(s)), np.zeros(len(b)))) 
-  target[target!=1]=-1
+  # s = np.asarray(s)
+  # b = np.asarray(b)
+  # data = np.concatenate((s,b),axis=0)
+  # target = np.concatenate((np.ones(len(s)), np.zeros(len(b)))) 
+  # target[target!=1]=-1
 
   data = norm1(data[:,1:101])
   
@@ -113,21 +113,21 @@ try:
   targets = [   ('t2calo_tight_cutbased' , 'T0HLTPhotonT2CaloTight'  ),
                 ('t2calo_medium_cutbased', 'T0HLTPhotonT2CaloMedium' ),
                 ('t2calo_loose_cutbased' , 'T0HLTPhotonT2CaloLoose'  ),
-                ('hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
-                ('hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
-                ('hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
-              ('rlx20_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
-              ('rlx20_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
-              ('rlx20_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
-              ('rlx30_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
-              ('rlx30_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
-              ('rlx30_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
-              ('rlx40_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
-              ('rlx40_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
-              ('rlx40_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
-              ('rlx50_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
-              ('rlx50_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
-              ('rlx50_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              #   ('hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              #   ('hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              #   ('hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              # ('rlx20_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              # ('rlx20_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              # ('rlx20_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              # ('rlx30_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              # ('rlx30_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              # ('rlx30_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              # ('rlx40_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              # ('rlx40_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              # ('rlx40_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
+              # ('rlx50_hlt_tight_cutbased' , 'trig_EF_ph_tight'        ),
+              # ('rlx50_hlt_medium_cutbased', 'trig_EF_ph_medium'       ),
+              # ('rlx50_hlt_loose_cutbased' , 'trig_EF_ph_loose'        ),
                 ]
 
 
